@@ -8,9 +8,9 @@ export default async function CustomersPage() {
     const response = await fetch("https://jsonplaceholder.typicode.com/users");
     const customers = await response.json();
     
-        customers.forEach(customer => {
-            customer.revenue = Math.floor(Math.random() * 10000); // Assign random revenue
-        });
+    customers.forEach(customer => {
+        customer.revenue = Math.floor(Math.random() * 10000); // Assign random revenue
+    });
     
     return (
         <main>

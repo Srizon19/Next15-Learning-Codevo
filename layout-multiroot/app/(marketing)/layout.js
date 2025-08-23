@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import NavLayout from './navLayout';
 import React from 'react';
 
 export const metadata = {
@@ -10,12 +10,7 @@ export default function MarketingLayout({ children }) {
     return (
         <div className="marketing-layout">
             <header className="marketing-header">
-                <nav className='flex justify-between items-center p-4 bg-blue-500 text-white'>
-                    {/* Add marketing navigation links here */}
-                    <Link href="/">Home</Link>
-                    <Link href="/revenue">Revenue</Link>
-                    <Link href="/customers">Customers</Link>
-                </nav>
+                <NavLayout></NavLayout>
             </header>
             <main className="marketing-content">
                 {children}

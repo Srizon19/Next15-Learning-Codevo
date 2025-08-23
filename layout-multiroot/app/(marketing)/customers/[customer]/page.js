@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {Metadata} from "next";
 import { metadata } from "@/app/layout";
+import Router from "next/router";
 
 export const generateMetadata = async ({params})=>{
     const info = await params;
@@ -24,6 +25,11 @@ export default async function CustomerPage({params}) {
     const response = await fetch("https://jsonplaceholder.typicode.com/users");
     const customers = await response.json();
     const info = await params;
+    const router = Router;
+    console.log(router);
+    if(customers.length<info.customer){
+    
+    }
     const customer = customers.find(c => c.id === parseInt(info.customer, 10));
     if (!customer) {    
         return <div>Customer not found</div>;
