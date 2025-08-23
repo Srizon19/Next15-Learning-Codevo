@@ -3,7 +3,8 @@ import {Metadata} from "next";
 import { metadata } from "@/app/layout";
 
 export const generateMetadata = async ({params})=>{
-    const id = await params.customer;
+    const info = await params;
+    const id = await info.customer;
     const title = await new Promise((resolve) => {
         setTimeout(() => {
             resolve(`Customer ${id} Details Page`);
@@ -22,8 +23,8 @@ export const generateMetadata = async ({params})=>{
 export default async function CustomerPage({params}) {
     const response = await fetch("https://jsonplaceholder.typicode.com/users");
     const customers = await response.json();
-    
-    const customer = customers.find(c => c.id === parseInt(params.customer, 10));
+    const info = await params;
+    const customer = customers.find(c => c.id === parseInt(info.customer, 10));
     if (!customer) {    
         return <div>Customer not found</div>;
     }
