@@ -1,7 +1,9 @@
 
 
-export default function DashboradLayout ({children, users, revenue, notifications}) {
-    return (
+export default function DashboradLayout ({children, users, revenue, notifications, login}) {
+     
+    const isLogin = true;
+    return isLogin? (
         <div>
             <header style={{ gridArea: 'header', border: '2px solid #000', borderRadius: '8px', padding: '16px' }}>
                 {children}
@@ -31,6 +33,6 @@ export default function DashboradLayout ({children, users, revenue, notification
         </div>
         
         
-    )
+    ): (<div>{login}</div>)
     
 }
