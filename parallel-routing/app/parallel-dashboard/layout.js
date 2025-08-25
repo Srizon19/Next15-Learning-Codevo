@@ -6,7 +6,7 @@ export default function DashboradLayout ({children, users, revenue, notification
     return isLogin? (
         <div>
             <header style={{ gridArea: 'header', border: '2px solid #000', borderRadius: '8px', padding: '16px' }}>
-                {children}
+                
             </header>
             <div style={{
             display: 'grid',
@@ -19,7 +19,7 @@ export default function DashboradLayout ({children, users, revenue, notification
             marginBottom: '20px'
         }}>
             {/* place the children as header */}
-            
+            {children}
             <div style={{ gridArea: 'analytics', border: '2px solid #4caf50', borderRadius: '8px', padding: '16px' }}>
                 {users}
             </div>
