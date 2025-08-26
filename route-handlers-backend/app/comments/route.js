@@ -1,8 +1,15 @@
 import {comments} from '../commentData/data';
+import { NextRequest } from 'next/server';
+import { headers } from 'next/headers';
 
 export async function GET(request){
-    console.log("here is the commnets",comments);
-    return new Response(JSON.stringify(comments), {
+    const {searchParams} = request.nextUrl;
+    // const requestHeaders = new Headers(request.headers);
+    const requestHeaders = await headers();
+    console.log("here the auth token",requestHeaders.get('Authorization'));
+    const query = searchParams.get('query') || '';
+    const filteredComments = query? comments.filter(c => c.text.toLocaleLowerCase().includes(query.toLocaleLowerCase())) : comments;
+    return new Response(JSON.stringify(filteredComments), {
         status: 200,
         headers: {
             'Content-Type': 'application/JSON',
